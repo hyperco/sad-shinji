@@ -9,6 +9,7 @@ var time;
 var timer;
 var CHIP_SIZE = 64;
 var loader;
+var mode = 'shinji'
 var reiSrc = {
   lv1: 'images/rei.png',
   lv2: 'images/rei.png',
@@ -17,13 +18,6 @@ var reiSrc = {
   lv5: 'images/rei.png',
 };
 var shinjiSrc = {
-/*
-  lv1: 'images/lv1.png',
-  lv2: 'images/lv2.png',
-  lv3: 'images/lv3.png',
-  lv4: 'images/lv4.png',
-  lv5: 'images/lv5.png'
-*/
   lv1: 'images/chair.png',
   lv2: 'images/bored.png',
   lv3: 'images/happy.png',
@@ -42,14 +36,23 @@ function init() {
   loader = new Loader(imgSrc, {}, ready);
 }
 
-function change_mode(mode) {
-    if (mode == "rei") {
+function change_mode() {
+    var mode_el = document.getElementById('mode');
+    if (mode == "shinji") {
+        mode = 'rei'
         imgSrc = reiSrc;
-    } else if (mode == "shinji") {
+        mode_el.src = 'images/mode_rei.png'
+    } else if (mode == "rei") {
+        mode = 'shinji'
         imgSrc = shinjiSrc;
+        mode_el.src = 'images/mode_shinji.png'
     }
-    init();
-    ready();
+    //init();
+    loader = new Loader(imgSrc, {},
+        function () {
+            img = loader.image;
+            drawMap();
+    });
 }
 
 /**
