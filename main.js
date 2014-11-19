@@ -9,21 +9,22 @@ var time;
 var timer;
 var CHIP_SIZE = 64;
 var loader;
-var imgSrc = {
-/*
-  lv1: 'images/lv1.png',
-  lv2: 'images/lv2.png',
-  lv3: 'images/lv3.png',
-  lv4: 'images/lv4.png',
-  lv5: 'images/lv5.png'
-*/
+var mode = 'shinji'
+var reiSrc = {
+  lv1: 'images/rei.png',
+  lv2: 'images/rei.png',
+  lv3: 'images/rei.png',
+  lv4: 'images/rei.png',
+  lv5: 'images/rei.png',
+};
+var shinjiSrc = {
   lv1: 'images/chair.png',
   lv2: 'images/bored.png',
   lv3: 'images/happy.png',
   lv4: 'images/groceries.png',
   lv5: 'images/mug.png',
-
 };
+var imgSrc = shinjiSrc;
 var img = {};
 var move;
 var maxChipCount;
@@ -33,6 +34,25 @@ var maxChipCount;
  */
 function init() {
   loader = new Loader(imgSrc, {}, ready);
+}
+
+function change_mode() {
+    var mode_el = document.getElementById('mode');
+    if (mode == "shinji") {
+        mode = 'rei'
+        imgSrc = reiSrc;
+        mode_el.src = 'images/mode_rei.png'
+    } else if (mode == "rei") {
+        mode = 'shinji'
+        imgSrc = shinjiSrc;
+        mode_el.src = 'images/mode_shinji.png'
+    }
+    //init();
+    loader = new Loader(imgSrc, {},
+        function () {
+            img = loader.image;
+            drawMap();
+    });
 }
 
 /**

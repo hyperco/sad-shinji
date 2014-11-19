@@ -13,6 +13,10 @@
     <h1>Unfamiliar Ceilings</h1>
     <div class="text">
       <div id="game-container">
+        <div id="header">
+            Mode: <image id=mode src='images/mode_shinji.png'
+                onclick='change_mode();'></image>
+        </div>
         <div id="time">Time:0 Move:0</div>
         <canvas id="canvas" width="768" height="768"></canvas>
         <div id="gameover_buttons" style="display:none;">
@@ -34,6 +38,7 @@
 		<li><em>Annoyed</em> if he is surrounded by four other Shinjis.</li>
 	</ul>
       </p>
+      <p>You can click on the mode icon to change characters.</p>
       <p>Lovingly ripped off from <a href="http://www.hojamaka.com/game/silent_world/">Silent World</a> by Hojamaka.</p>
     </div>
   </div>

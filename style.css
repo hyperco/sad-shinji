@@ -38,6 +38,12 @@ div.text {
   margin: 0.25em auto;
 }
 
+#header {
+  width: 768px;
+  text-align: right;
+  margin: 0.25em auto;
+}
+
 #game-container {
   width: 100%;
   text-align: center;
