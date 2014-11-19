@@ -9,7 +9,14 @@ var time;
 var timer;
 var CHIP_SIZE = 64;
 var loader;
-var imgSrc = {
+var reiSrc = {
+  lv1: 'images/rei.png',
+  lv2: 'images/rei.png',
+  lv3: 'images/rei.png',
+  lv4: 'images/rei.png',
+  lv5: 'images/rei.png',
+};
+var shinjiSrc = {
 /*
   lv1: 'images/lv1.png',
   lv2: 'images/lv2.png',
@@ -22,8 +29,8 @@ var imgSrc = {
   lv3: 'images/happy.png',
   lv4: 'images/groceries.png',
   lv5: 'images/mug.png',
-
 };
+var imgSrc = shinjiSrc;
 var img = {};
 var move;
 var maxChipCount;
@@ -33,6 +40,16 @@ var maxChipCount;
  */
 function init() {
   loader = new Loader(imgSrc, {}, ready);
+}
+
+function change_mode(mode) {
+    if (mode == "rei") {
+        imgSrc = reiSrc;
+    } else if (mode == "shinji") {
+        imgSrc = shinjiSrc;
+    }
+    init();
+    ready();
 }
 
 /**
