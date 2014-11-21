@@ -10,6 +10,15 @@ var timer;
 var CHIP_SIZE = 64;
 var loader;
 var mode = 'shinji'
+var asukaSrc = {
+  lv1: 'images/asuka5.png',
+  lv2: 'images/asuka4.png',
+  lv3: 'images/asuka1.png',
+  lv4: 'images/asuka6.png',
+  lv5: 'images/asuka2.png',
+
+  lv6: 'images/asuka3.png', // unused (for now?)
+};
 var reiSrc = {
   lv1: 'images/rei.png',
   lv2: 'images/rei.png',
@@ -43,8 +52,12 @@ function change_mode() {
         imgSrc = reiSrc;
         mode_el.src = 'images/mode_rei.png'
     } else if (mode == "rei") {
+        mode = 'asuka'
+        imgSrc = asukaSrc;
+        mode_el.src = 'images/mode_asuka.png'
+    } else if (mode == "asuka") {
         mode = 'shinji'
-        imgSrc = shinjiSrc;
+        imgSrc = shinjiSrc
         mode_el.src = 'images/mode_shinji.png'
     }
     //init();
@@ -121,6 +134,8 @@ function onMouseDown(e) {
     map[select.y][select.x] = 0;
     select = null;
     reWeight();
+    if (mode == 'asuka')
+        map[yy][xx] = Math.floor(Math.random() * 6) + 1;
     drawMap();
     move ++;
     $('#time').html('Time:' + time + ' Move:' + move);
